@@ -325,7 +325,7 @@
 
                 </nav>
                 <!-- End of Topbar -->
-                <div class="card mb-12 m-5">
+                <div class="card mb-12 m-2 m-md-5">
                     <div class="card-header">
                         @yield('title')
                     </div>

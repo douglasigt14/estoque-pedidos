@@ -15,7 +15,8 @@
             @if ($produtos->isEmpty())
                 <div class="alert alert-info">Não há produtos cadastrados.</div>
             @else
-                <table class="table table-bordered table-striped">
+                <div class="table-responsive">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             @foreach ($produtoHeader->toArray() as $key => $value)
@@ -23,7 +24,6 @@
                                     {{ ucfirst( $produtoHeader->getField($key)) }}
                                 </th>
                             @endforeach
-                            <th>Editar</th>
                             <th>Apagar</th>
                         </tr>
                     </thead>
@@ -36,9 +36,6 @@
                                 </td>
                                 @endforeach
                                 <td>
-                                    <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                </td>
-                                <td>
                                     <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -49,6 +46,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             @endif
         </div>
 
@@ -77,13 +75,13 @@
             <!-- Preço do Produto -->
             <div class="col-md-6 mb-3">
               <label for="preco" class="form-label">Preço</label>
-              <input type="text" class="form-control" id="preco" name="preco" pattern="[0-9]+(\.[0-9]{1,2})?" required>
+              <input type="text" class="form-control currency-input" id="preco" name="preco" pattern="[0-9]+(\.[0-9]{1,2})?" required>
             </div>
 
             <!-- Preço de Revenda -->
             <div class="col-md-6 mb-3">
               <label for="preco_revenda" class="form-label">Preço de Revenda</label>
-              <input type="text" class="form-control" id="preco_revenda" name="preco_revenda" pattern="[0-9]+(\.[0-9]{1,2})?">
+              <input type="text" class="form-control currency-input" id="preco_revenda" name="preco_revenda" pattern="[0-9]+(\.[0-9]{1,2})?">
             </div>
             
             <!-- Quantidade do Produto -->
@@ -117,18 +115,20 @@
 @push('scripts')
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var inputPreco = document.getElementById('preco');
-      
-      inputPreco.addEventListener('input', function(e) {
-        var valor = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
-        var formato = Number(valor / 100).toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL'
+   document.addEventListener("DOMContentLoaded", function() {
+      var inputs = document.querySelectorAll('.currency-input'); // Seleciona todos os inputs com a classe 'currency-input'
+
+      inputs.forEach(function(input) {
+        input.addEventListener('input', function(e) {
+          var valor = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+          var formato = Number(valor / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          });
+
+          e.target.value = formato;
         });
-    
-        e.target.value = formato;
       });
-    });
+   });
 </script>
 @endpush
