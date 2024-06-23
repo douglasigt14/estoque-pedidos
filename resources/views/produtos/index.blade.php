@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="row d-flex justify-content-between">
                     <div> <h1>Lista de Produtos</h1></div>
-                    <div><a href="{{ route('produtos.create') }}" class="btn btn-primary mb-3">Novo Produto</a></div>
+                    <div><a href="{{ route('produtos.create') }}" class="btn btn-primary mb-3">+</a></div>
 
                 </div>
                 <table class="table">
