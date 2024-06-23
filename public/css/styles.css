@@ -1,4 +1,6 @@
-.container{
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.container-body{
+  padding: 1rem !important;
+}
+.content-header{
+  margin-bottom: 1rem;
 } 
