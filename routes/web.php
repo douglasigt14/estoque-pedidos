@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
     Route::get('api', function () {
-        return 'Versão 1.0.0';
+        return 'Versão Estoque 1.0.0';
     });
     Route::resource('produtos', ProdutoController::class);
 });
