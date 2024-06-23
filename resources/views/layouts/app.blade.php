@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
 </head>
 
@@ -329,7 +330,9 @@
                         @yield('title')
                     </div>
                     <div class="card-body">
-                        @yield('content')
+                        <div class="container d-flex flex-column w-100">
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
             </div>
