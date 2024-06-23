@@ -58,23 +58,23 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item {{ Request::is('produtos*') ? 'active' : '' }}">
+                <a class="nav-link" href="/produtos">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Produtos</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item {{ Request::is('clientes*') ? 'active' : '' }}">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Clientes</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Materia Prima</span></a>
+            <li class="nav-item {{ Request::is('materia_prima*') ? 'active' : '' }}">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Insumos</span></a>
             </li>
           
             <!-- Divider -->
