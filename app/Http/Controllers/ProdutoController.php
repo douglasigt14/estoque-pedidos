@@ -9,8 +9,11 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all();
-        return view('produtos', compact('produtos'));
+        $produtos = Produto::get();
+
+        $produtoHeader =  $produtos->first();
+
+        return view('produtos', compact('produtos','produtoHeader'));
     }
 
     public function create()

@@ -330,7 +330,7 @@
                         @yield('title')
                     </div>
                     <div class="card-body">
-                        <div class="container d-flex flex-column w-100">
+                        <div class="d-flex flex-column w-100">
                             @yield('content')
                         </div>
                     </div>

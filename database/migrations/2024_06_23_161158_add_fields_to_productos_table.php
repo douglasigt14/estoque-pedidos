@@ -14,7 +14,6 @@ class AddFieldsToProductosTable extends Migration
     public function up()
     {
         Schema::table('produtos', function (Blueprint $table) {
-            $table->enum('tamanho', ['PP', 'P', 'M', 'G', 'GG']);
             $table->decimal('preco_revenda', 8, 2);
             $table->string('cor')->nullable();
         });
