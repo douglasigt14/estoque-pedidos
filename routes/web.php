@@ -6,6 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/')->group(function () {
-    Route::resource('/', Dashboard::class);
+    Route::get('/', [ProdutoController::class, 'index']);
     Route::resource('produtos', ProdutoController::class);
 });
