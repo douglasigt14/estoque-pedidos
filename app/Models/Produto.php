@@ -9,6 +9,8 @@ class Produto extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    
     protected $visible = [
         'id', 'nome', 'descricao', 'quantidade', 'preco','preco_revenda'
     ];

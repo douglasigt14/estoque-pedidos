@@ -23,13 +23,20 @@ class ProdutoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'nome' => 'required',
             'quantidade' => 'required|integer|min:0',
-            'preco' => 'required|numeric|min:0',
+            'preco' => 'required',
+            'preco_revenda' => 'required',
         ]);
 
-        Produto::create($request->all());
+
+        $data['preco'] = $this->limparPreco($data['preco']);
+        $data['preco_revenda'] = $this->limparPreco($data['preco_revenda']);
+
+        dd($data);
+
+        Produto::create($data);
 
         return redirect()->route('produtos.index')
             ->with('success', 'Produto criado com sucesso.');
@@ -60,6 +67,12 @@ class ProdutoController extends Controller
 
         return redirect()->route('produtos.index')
             ->with('success', 'Produto excluído com sucesso.');
+    }
+
+    private function limparPreco($preco)
+    {
+        // Remove espaços em branco, "R$" e caracteres indesejados
+        return str_replace('R$', '', $preco);
     }
 }
 
