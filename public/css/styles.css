@@ -7,12 +7,15 @@
 .center{
   text-align: center;
 }
+tr{
+  cursor: pointer;
+}
 
 @media (max-width: 767.98px) {
-  /* .table thead th:not(:first-child):not(:nth-child(2)),
+  .table thead th:not(:first-child):not(:nth-child(2)),
   .table tbody td:not(:first-child):not(:nth-child(2)) {
       display: none;
-  } */
+  }
   .table{
     font-size: .7rem;
   }

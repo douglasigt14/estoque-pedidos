@@ -6,7 +6,7 @@
         <div class="content-header d-flex justify-content-between">
             <div></div>
             <div>
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal" onclick="openModal()">
                 +
               </button>
             </div>
@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         @foreach ($produtos as $produto)
-                            <tr>
+                            <tr onclick="openModal({{ json_encode($produto) }})">
                                 @foreach ($produto->toArray() as $key => $value)
                                 <td @if ($produto->deveCentralizarCampo($key)) class="center" @endif>
                                     {{ $value }}
@@ -58,13 +58,14 @@
                 <h5 class="modal-title" id="modalLabel">Inserir Novo Produto</h5>
               </div>
               <div class="modal-body">
-                <form id="formInserir" action='/produtos' method="POST">
+                <form id="formInserirEditar" action='/produtos' method="POST">
                   @csrf
+                  <div id="methodField"></div>
                   <div class="row">
                     <!-- Nome do Produto -->
                     <div class="col-md-12 mb-3">
                       <label for="nome" class="form-label">Nome</label>
-                      <input autocomplete="off"  type="text" class="form-control" id="nome" name="nome" required>
+                      <input autocomplete="off" type="text" class="form-control" id="nome" name="nome" required>
                     </div>
 
                     <!-- Descrição do Produto -->
@@ -76,19 +77,19 @@
                     <!-- Preço do Produto -->
                     <div class="col-md-6 mb-3">
                       <label for="preco" class="form-label">Preço</label>
-                      <input type="text"  class="form-control currency-input" id="preco" name="preco" required>
+                      <input type="text" class="form-control currency-input" id="preco" name="preco" required>
                     </div>
 
                     <!-- Preço de Revenda -->
                     <div class="col-md-6 mb-3">
                       <label for="preco_revenda" class="form-label">Preço de Revenda</label>
-                      <input type="text"  class="form-control currency-input" id="preco_revenda" name="preco_revenda" required>
+                      <input type="text" class="form-control currency-input" id="preco_revenda" name="preco_revenda" required>
                     </div>
                     
                     <!-- Quantidade do Produto -->
                     <div class="col-md-6 mb-3">
                       <label for="quantidade" class="form-label">Quantidade</label>
-                      <input type="number" value=1 class="form-control" id="quantidade" name="quantidade" required>
+                      <input type="number" value="1" class="form-control" id="quantidade" name="quantidade" required>
                     </div>
 
                     <!-- Cor do Produto -->
@@ -113,4 +114,39 @@
 
 @push('scripts')
 <script src="{{ asset('js/uteis.js') }}"> </script>
+<script>
+  function openModal(produto = null) {
+    const modal = $('#modal');
+    const form = $('#formInserirEditar');
+    const methodField = $('#methodField');
+
+    if (produto) {
+      // Preencher o formulário com os valores do produto para edição
+      $('#modalLabel').text('Editar Produto');
+      form.attr('action', `/produtos/${produto.id}`);
+      methodField.html('@method('PUT')');
+      
+      $('#nome').val(produto.nome);
+      $('#descricao').val(produto.descricao);
+      $('#preco').val(produto.preco);
+      $('#preco_revenda').val(produto.preco_revenda);
+      $('#quantidade').val(produto.quantidade);
+      $('#cor').val(produto.cor);
+    } else {
+      // Limpar o formulário para inserção de um novo produto
+      $('#modalLabel').text('Inserir Novo Produto');
+      form.attr('action', '/produtos');
+      methodField.html('');
+      
+      $('#nome').val('');
+      $('#descricao').val('');
+      $('#preco').val('');
+      $('#preco_revenda').val('');
+      $('#quantidade').val(1);
+      $('#cor').val('');
+    }
+
+    modal.modal('show');
+  }
+</script>
 @endpush

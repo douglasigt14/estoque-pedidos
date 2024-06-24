@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
  });
 
  // Captura o envio do formulário com Fetch API
- document.getElementById('formInserir').addEventListener('submit', function(event) {
+ document.getElementById('formInserirEditar').addEventListener('submit', function(event) {
       event.preventDefault();
 
       // Cria um objeto FormData com os dados do formulário
