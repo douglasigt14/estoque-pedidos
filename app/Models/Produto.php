@@ -12,7 +12,7 @@ class Produto extends Model
     protected $guarded = [];
     
     protected $visible = [
-        'id', 'nome', 'descricao', 'quantidade', 'preco','preco_revenda'
+        'id', 'nome', 'preco','preco_revenda','quantidade','descricao'
     ];
 
     protected $camposCentralizados = [

@@ -4,13 +4,21 @@
 .content-header{
   margin-bottom: 1rem;
 } 
-
-@media (max-width: 767.98px) {
-  .table thead th:not(:first-child):not(:nth-child(2)),
-  .table tbody td:not(:first-child):not(:nth-child(2)) {
-      display: none;
-  }
-}
 .center{
   text-align: center;
 }
+
+@media (max-width: 767.98px) {
+  /* .table thead th:not(:first-child):not(:nth-child(2)),
+  .table tbody td:not(:first-child):not(:nth-child(2)) {
+      display: none;
+  } */
+  .table{
+    font-size: .7rem;
+  }
+  .btn-lg {
+    display: none;
+  }
+}
+
+

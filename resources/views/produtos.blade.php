@@ -3,17 +3,17 @@
 @section('title', 'Lista de Produtos')
 
 @section('content')
-        <div class="row content-header d-flex justify-content-between">
+        <div class="content-header d-flex justify-content-between">
             <div></div>
             <div>
-              <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal">
                 +
               </button>
             </div>
         </div>
         <div class="w-100">
             @if ($produtos->isEmpty())
-                <div class="alert alert-info">Não há produtos cadastrados.</div>
+                <div class="alert alert-warning">Não há produtos cadastrados.</div>
             @else
                 <div class="table-responsive">
                 <table class="table table-bordered">
