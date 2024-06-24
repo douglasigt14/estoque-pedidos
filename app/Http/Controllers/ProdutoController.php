@@ -46,18 +46,27 @@ class ProdutoController extends Controller
         return view('produtos.edit', compact('produto'));
     }
 
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+      
+        $data = $request->validate([
             'nome' => 'required',
+            'descricao' => 'sometimes',
             'quantidade' => 'required|integer|min:0',
-            'preco' => 'required|numeric|min:0',
+            'preco' => 'required',
+            'preco_revenda' => 'required',
+            'cor' => 'sometimes'
         ]);
 
-        $produto->update($request->all());
+        $produto = Produto::find($id);
 
-        return redirect()->route('produtos.index')
-            ->with('success', 'Produto atualizado com sucesso.');
+
+        $data['preco'] = $this->formatPreco($data['preco']);
+        $data['preco_revenda'] = $this->formatPreco($data['preco_revenda']);
+
+        $produto->update($data);
+
+        return $produto;
     }
 
     public function destroy(Produto $produto)

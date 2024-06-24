@@ -16,34 +16,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
  // Captura o envio do formulário com Fetch API
  document.getElementById('formInserirEditar').addEventListener('submit', function(event) {
-      event.preventDefault();
+  event.preventDefault();
 
-      // Cria um objeto FormData com os dados do formulário
-      const formData = new FormData(this);
-      // Envia a requisição usando Fetch API
-      fetch(this.action, {
-          method: 'POST',
-          body: formData
-      })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Ocorreu um erro ao salvar o produto.');
-          }
-          return response.json(); // Retorna os dados como JSON se a resposta for OK
-      })
-      .then(data => {
-          // Processa os dados de resposta, se necessário
-          console.log(data);
+  // Cria um objeto FormData com os dados do formulário
+  const formData = new FormData(this);
+  const isEditMode = document.querySelector('#methodField').innerHTML.includes('@method(\'PUT\')');
+  const method = isEditMode ? 'PUT' : 'POST';
 
-           // Fecha o modal usando Bootstrap
-          closeModal();
+  // Envia a requisição usando Fetch API
+  fetch(this.action, {
+      method: method,
+      headers: {
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+      },
+      body: formData
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Ocorreu um erro ao salvar o produto.');
+      }
+      return response.json(); // Retorna os dados como JSON se a resposta for OK
+  })
+  .then(data => {
+      // Processa os dados de resposta, se necessário
+      console.log(data);
 
-          this.reset(); // Limpa o formulário após o envio bem-sucedido
-      })
-      .catch(error => {
-          console.error('Erro:', error.message);
-      });
+      // Fecha o modal usando Bootstrap
+      $('#modal').modal('hide');
+      location.reload();
+      this.reset(); // Limpa o formulário após o envio bem-sucedido
+  })
+  .catch(error => {
+      console.error('Erro:', error.message);
   });
+});
+
 
   function closeModal() {
     $('#modal').modal('hide');

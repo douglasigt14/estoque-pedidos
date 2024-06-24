@@ -29,9 +29,9 @@
                     </thead>
                     <tbody>
                         @foreach ($produtos as $produto)
-                            <tr onclick="openModal({{ json_encode($produto) }})">
+                            <tr>
                                 @foreach ($produto->toArray() as $key => $value)
-                                <td @if ($produto->deveCentralizarCampo($key)) class="center" @endif>
+                                <td class='td-click' onclick="openModal({{ json_encode($produto) }})" @if ($produto->deveCentralizarCampo($key)) class="center" @endif>
                                     {{ $value }}
                                 </td>
                                 @endforeach
@@ -39,7 +39,7 @@
                                     <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick=" return confirm('Tem certeza que deseja excluir este produto?')">Excluir</button>
                                     </form>
                                 </td>
                             </tr>
