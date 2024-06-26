@@ -4,15 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produto extends Model
 {
     use HasFactory;
 
+    use SoftDeletes;
+
     protected $guarded = [];
     
     protected $visible = [
         'id', 'nome', 'preco','preco_revenda','quantidade','descricao'
+    ];
+
+    protected $casts = [
+        'quantidade' => 'array',
     ];
 
     protected $camposCentralizados = [
