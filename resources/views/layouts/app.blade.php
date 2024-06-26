@@ -398,7 +398,7 @@
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
-    @stack('scripts');
+    @stack('scripts')
 
 </body>
 
