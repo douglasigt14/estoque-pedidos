@@ -7,7 +7,7 @@ function openModal(produto = null) {
       // Preencher o formulário com os valores do produto para edição
       $('#modalLabel').text('Editar Produto');
       form.attr('action', `/produtos/${produto.id}`);
-      methodField.html('@method('PUT')');
+      methodField.html('@method(\'PUT\')');
       
       $('#nome').val(produto.nome);
       $('#descricao').val(produto.descricao);
