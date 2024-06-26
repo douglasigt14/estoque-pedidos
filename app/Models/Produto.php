@@ -15,7 +15,7 @@ class Produto extends Model
     protected $guarded = [];
     
     protected $visible = [
-        'id', 'nome', 'preco','preco_revenda','quantidade','descricao'
+        'id', 'nome', 'preco','preco_revenda','descricao'
     ];
 
     protected $casts = [
