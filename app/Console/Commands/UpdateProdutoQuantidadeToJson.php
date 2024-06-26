@@ -19,7 +19,7 @@ class UpdateProdutoQuantidadeToJson extends Command
     {
         // Estrutura JSON padrão
         $defaultQuantidade = [
-            'PP' => 0,
+            'RN' => 0,
             'P' => 0,
             'M' => 0,
             'G' => 0,

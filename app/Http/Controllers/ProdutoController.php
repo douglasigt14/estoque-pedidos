@@ -30,6 +30,14 @@ class ProdutoController extends Controller
         $data['preco'] = $this->formatPreco($data['preco']);
         $data['preco_revenda'] = $this->formatPreco($data['preco_revenda']);
 
+        $data['quantidade'] = json_encode([
+            'RN' => 0,
+            'P' => 0,
+            'M' => 0,
+            'G' => 0,
+            'GG' => 0
+        ]);
+
         $product = Produto::create($data);
 
         return $product;
