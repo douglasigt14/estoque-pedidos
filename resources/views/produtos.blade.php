@@ -15,7 +15,7 @@
             @if ($produtos->isEmpty())
                 <div class="alert alert-warning">Não há produtos cadastrados.</div>
             @else
-                <div class="table-responsive">
+                <div class="table-responsive table-products">
                 <table class="table table-bordered">
                     <thead>
                         <tr>

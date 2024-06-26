@@ -13,8 +13,8 @@
 }
 
 @media (max-width: 767.98px) {
-  .table thead th:not(:first-child):not(:nth-child(2)):not(:nth-child(7)),
-  .table tbody td:not(:first-child):not(:nth-child(2)):not(:nth-child(7)) {
+  .table-products .table thead th:not(:first-child):not(:nth-child(2)):not(:nth-child(7)),
+  .table-products .table tbody td:not(:first-child):not(:nth-child(2)):not(:nth-child(7)) {
       display: none;
   }
   .table{
