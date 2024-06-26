@@ -31,8 +31,9 @@
                         @foreach ($produtos as $produto)
                             <tr>
                                 @foreach ($produto->toArray() as $key => $value)
-                                <td class='td-click' onclick="openModal({{ json_encode($produto) }})" @if ($produto->deveCentralizarCampo($key)) class="center" @endif>
-                                    {{ $value }}
+                                <td onclick="openModal({{ json_encode($produto) }})"
+                                  @class(['td-click', 'center' => $produto->deveCentralizarCampo($key)])>
+                                  {{ $value }}
                                 </td>
                                 @endforeach
                                 <td class="center">

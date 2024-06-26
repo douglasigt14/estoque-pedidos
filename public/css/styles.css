@@ -1,5 +1,6 @@
 .container-body{
   padding: 1rem !important;
+  min-height: calc(100vh - 280px);
 }
 .content-header{
   margin-bottom: 1rem;
