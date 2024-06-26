@@ -17,7 +17,7 @@ class CreateItensPedidoTable extends Migration
             $table->id();
             $table->foreignId('pedido_id')->constrained()->onDelete('cascade');
             $table->foreignId('produto_id')->constrained()->onDelete('cascade');
-            $table->integer('quantidade');
+            $table->integer('qtd');
             $table->decimal('preco', 8, 2);
             $table->timestamps();
         });

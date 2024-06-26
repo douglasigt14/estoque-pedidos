@@ -11,24 +11,39 @@ trait TableUteisTrait
         return [];
     }
 
-    public function getNomesCampos()
+    public function getNameFields()
     {
-        if (property_exists($this, 'nomesCampos')) {
-            return $this->nomesCampos;
+        if (property_exists($this, 'nameFields')) {
+            return $this->nameFields;
         }
         return [];
     }
 
-    public function getField($campo)
+
+    public function getHideFields()
     {
-        $nomesCampos = $this->getNomesCampos();
-        return $nomesCampos[$campo] ?? $campo;
+        if (property_exists($this, 'hideFields')) {
+            return $this->hideFields;
+        }
+        return [];
     }
 
-    public function deveCentralizarCampo($campo)
+    public function getField($field)
+    {
+        $nameFields = $this->getNameFields();
+        return $nameFields[$field] ?? $field;
+    }
+
+    public function isCenterField($field)
     {
         $camposCentralizados = $this->getCamposCentralizados();
-        return in_array($campo, $camposCentralizados);
+        return in_array($field, $camposCentralizados);
+    }
+
+    public function isHideField($campo)
+    {
+        $hideFields = $this->getHideFields();
+        return in_array($campo, $hideFields);
     }
 }
 

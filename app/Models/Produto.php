@@ -12,17 +12,14 @@ class Produto extends Model
 
     protected $guarded = [];
 
-    protected $visible = [
-        'id', 'nome', 'preco', 'preco_revenda', 'descricao', 'cor'
-    ];
+    protected $hideFields = ["qtd"];
 
     protected $camposCentralizados = [
         'preco', 'preco_revenda', 'cor','id'
     ];
 
-    protected $nomesCampos = [
-        'id' => 'COD',
-        'quantidade' => 'Qtd',
+    protected $nameFields = [
+        'id' => 'Cod',
         'preco' => 'Preço',
         'preco_revenda' => 'Revenda',
     ];

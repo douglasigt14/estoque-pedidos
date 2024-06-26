@@ -9,14 +9,14 @@ class ChangeQuantidadeToJsonInProdutosTable extends Migration
     public function up()
     {
         Schema::table('produtos', function (Blueprint $table) {
-            $table->json('quantidade')->change();
+            $table->json('qtd')->change();
         });
     }
 
     public function down()
     {
         Schema::table('produtos', function (Blueprint $table) {
-            $table->integer('quantidade')->change(); // Ajuste para seu tipo original se necessário
+            $table->integer('qtd')->change(); // Ajuste para seu tipo original se necessário
         });
     }
 }

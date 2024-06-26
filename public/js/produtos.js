@@ -13,7 +13,7 @@ function openModal(produto = null) {
       $('#descricao').val(produto.descricao);
       $('#preco').val(produto.preco);
       $('#preco_revenda').val(produto.preco_revenda);
-      $('#quantidade').val(produto.quantidade);
+      $('#qtd').val(produto.qtd);
       $('#cor').val(produto.cor);
     } else {
       // Limpar o formulário para inserção de um novo produto
@@ -25,7 +25,7 @@ function openModal(produto = null) {
       $('#descricao').val('');
       $('#preco').val('');
       $('#preco_revenda').val('');
-      $('#quantidade').val(1);
+      $('#qtd').val(1);
       $('#cor').val('');
     }
 

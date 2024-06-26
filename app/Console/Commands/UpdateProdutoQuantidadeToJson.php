@@ -27,7 +27,7 @@ class UpdateProdutoQuantidadeToJson extends Command
         ];
 
         // Atualizar todos os produtos
-        Produto::query()->update(['quantidade' => json_encode($defaultQuantidade)]);
+        Produto::query()->update(['qtd' => json_encode($defaultQuantidade)]);
 
         $this->info('Todos os registros do model Produto foram atualizados para a nova estrutura JSON.');
     }

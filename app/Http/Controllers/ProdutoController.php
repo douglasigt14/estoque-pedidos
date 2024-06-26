@@ -9,7 +9,7 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::get();
+        $produtos = Produto::select( 'id', 'nome', 'preco', 'preco_revenda', 'descricao', 'cor','qtd')->get();
 
         $produtoHeader =  $produtos->first();
 
@@ -30,7 +30,7 @@ class ProdutoController extends Controller
         $data['preco'] = $this->formatPreco($data['preco']);
         $data['preco_revenda'] = $this->formatPreco($data['preco_revenda']);
 
-        $data['quantidade'] = json_encode([
+        $data['qtd'] = json_encode([
             'RN' => 0,
             'P' => 0,
             'M' => 0,

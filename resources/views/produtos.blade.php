@@ -20,7 +20,12 @@
                     <thead>
                         <tr>
                             @foreach ($produtoHeader->toArray() as $key => $value)
-                                <th @if ($produtoHeader->deveCentralizarCampo($key)) class="center" @endif>
+                                
+                                @if ($produtoHeader->isHideField($key)) 
+                                  @continue 
+                                @endif
+
+                                <th @if ($produtoHeader->isCenterField($key)) class="center" @endif>
                                     {{ ucfirst( $produtoHeader->getField($key)) }}
                                 </th>
                             @endforeach
@@ -31,8 +36,13 @@
                         @foreach ($produtos as $produto)
                             <tr>
                                 @foreach ($produto->toArray() as $key => $value)
+
+                                @if ($produto->isHideField($key)) 
+                                  @continue 
+                                @endif
+                                
                                 <td onclick="openModal({{ json_encode($produto) }})"
-                                  @class(['td-click', 'center' => $produto->deveCentralizarCampo($key)])>
+                                  @class(['td-click', 'center' => $produto->isCenterField($key)])>
                                   {{ $value }}
                                 </td>
                                 @endforeach
