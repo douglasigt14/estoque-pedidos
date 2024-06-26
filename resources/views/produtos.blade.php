@@ -75,34 +75,28 @@
                     </div>
 
                     <!-- Preço do Produto -->
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                       <label for="preco" class="form-label">Preço</label>
-                      <input type="text" class="form-control currency-input" id="preco" name="preco" required>
+                      <input autocomplete="off" type="text" class="form-control currency-input" id="preco" name="preco" required>
                     </div>
 
                     <!-- Preço de Revenda -->
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                       <label for="preco_revenda" class="form-label">Preço de Revenda</label>
                       <input type="text" class="form-control currency-input" id="preco_revenda" name="preco_revenda" required>
                     </div>
-                    
-                    <!-- Quantidade do Produto -->
-                    <div class="col-md-6 mb-3">
-                      <label for="quantidade" class="form-label">Quantidade</label>
-                      <input type="number" value="1" class="form-control" id="quantidade" name="quantidade" required>
-                    </div>
 
                     <!-- Cor do Produto -->
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                       <label for="cor" class="form-label">Cor</label>
-                      <input type="text" class="form-control" id="cor" name="cor">
+                      <input autocomplete="off" type="text" class="form-control" id="cor" name="cor">
                     </div>
                   </div>
 
                   <!-- Botões de Ação -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                   </div>
                 </form>
               </div>

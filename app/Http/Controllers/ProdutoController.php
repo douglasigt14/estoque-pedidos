@@ -16,17 +16,11 @@ class ProdutoController extends Controller
         return view('produtos', compact('produtos','produtoHeader'));
     }
 
-    public function create()
-    {
-        return view('produtos.create');
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([
             'nome' => 'required',
             'descricao' => 'sometimes',
-            'quantidade' => 'required|integer|min:0',
             'preco' => 'required',
             'preco_revenda' => 'required',
             'cor' => 'sometimes'
@@ -41,18 +35,12 @@ class ProdutoController extends Controller
         return $product;
     }
 
-    public function edit(Produto $produto)
-    {
-        return view('produtos.edit', compact('produto'));
-    }
-
     public function update(Request $request, $id)
     {
       
         $data = $request->validate([
             'nome' => 'required',
             'descricao' => 'sometimes',
-            'quantidade' => 'required|integer|min:0',
             'preco' => 'required',
             'preco_revenda' => 'required',
             'cor' => 'sometimes'
@@ -79,7 +67,6 @@ class ProdutoController extends Controller
 
     private function formatPreco($preco)
     {
-        // Remove espaços em branco, "R$" e caracteres indesejados
         return str_replace(',', '.', $preco);
     }
 }
